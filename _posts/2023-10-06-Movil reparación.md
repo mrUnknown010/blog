@@ -1,29 +1,27 @@
----
-title: Móvil Notas
----
-# **1. Herramientas**
-### **1.1. Herramientas de diagnóstico**
+------
+# 1. Herramientas
+### 1.1. Herramientas de diagnóstico
 
-- _Multímetro o tester ()_
-- _Fuente de alimentación ()_
-- _usbTester ()_
-- _Cámara térmica ()_
-	- _Localizador de fallas o Removedor de partículas_
-- _Microscopio ()_
-	- _Lupa_
+- Multímetro o tester ()
+- Fuente de alimentación ()
+- usbTester ()
+- Cámara térmica ()
+	- Localizador de fallas o Removedor de partículas 
+- Microscopio ()
+	- Lupa
 
-###  **1.2. Herramientas de desarme y armado**
+###  1.2. Herramientas de desarme y armado
 
-- _Destornilladores de precisión ()_
-- _Púas plásticas y espátulas de desarme ()_
-- _Plancha separadora o de calor ()_
-	- _Pistola de calor ()_
-- _Ventosa ()_
+- Destornilladores de precisión ()
+- Púas plásticas y espátulas de desarme ()
+- Plancha separadora o de calor ()
+	- Pistola de calor ()
+- Ventosa ()
 
 ### 1.3. Herramientas para soldadura
 
 - Estación de soldadura ()
-	- Cautin o soldador ()
+	- Cautín o soldador ()
 - Estaño ()
 - Flux ()
 - Malla desoldante ()
@@ -276,7 +274,7 @@ _Medición de diodos_
 - 2 (D-) , 3 (D+ o GND)
 - 4 (id/n-c)
 
-#### 4.1.1 Diagnostico de Pin de Carga
+### _Diagnóstico de Pin de Carga_
 
 	Dock test
 	(placa con pin de carga con puntos dispersos conectados a cada contacto)
@@ -420,14 +418,12 @@ _Con alimentación_
 		- Es posible que una de las bobinas de salida no tenga V.
 			- Es para alimentar al procesador de llamadas, pero no se habilita mientras no haya un SIM.
 
-### 6. Pantallas - IPS
-
-#### Tipos de pantallas
+# 6. Tipos de pantallas
 
 - IPS  ->  _lcd, tft, ln-cell _
 - OLED  ->  _amoled, superamoled_
 
-#### IPS
+### 6.1. IPS
 - Son pantallas que tienen un LCD(display de cristal liquido) incorporado.
 - Pueden generar colores.
 	- pero no puede mostrar esos colores por si mismos ya que no emiten luz.
@@ -436,7 +432,7 @@ _Con alimentación_
 	- Consume mas corriente.
 	- No existe el color negro, sino blue oscuro y el backlight siempre esta consumiendo.
 
-#### OLED
+### 6.2. OLED
 - Son pantallas super finas.
 	- Con años de uso suele aparecer la pantalla fantasma.
 	- Vida util mas corta.
@@ -450,7 +446,7 @@ Buscar en google caracteristicas de moviles:
 Ingresar en la pagina smart-gsm.com -> https://www.smart-gsm.com/moviles
 ```
 
-### Tipos de repuestos - Recomendaciones
+### 6.3. Tipos de repuestos - Recomendaciones 
 
 | calidad  | descripción  |
 |----------|--------------|
@@ -471,16 +467,16 @@ Ingresar en la pagina smart-gsm.com -> https://www.smart-gsm.com/moviles
 - Al ser mas gruesas, muchas veces la funcionalidad de los botones inferiores queda afectada.
 - Notable disminución de la calidad de imagen, ya que pasamos de un display OLED a uno IPS.
 
-### Micrófonos
+# 7. Micrófonos
 
-#### Tipos de micrófonos
+### 7.1. Tipos de micrófonos
 - Analógicos
 - Digitales
 
-##### Analógicos
+#### Analógicos
 Son muy escasos, en la actualidad , la inmensa mayoría de los teléfonos incluye micrófonos digitales.
 
-##### Diferencias
+#### Diferencias
 - Un micrófono analógico tiene dos contactos(+y-),  
 	- La linea positiva es la encargada de alimentar el micrófono y de transportar los datos hacia el codificador o codec de audio.
 - La mayoría es circular.
@@ -498,16 +494,315 @@ _Puede tratarse de una falla del CODEC de audio_
 	En la mayoría de los equipos de gama media y baja esta adentro del PMIC.
 	Algunos teléfonos tienes dos micrófonos(uno arriba y otro abajo).
 
-### Micrófonos: Medición y revisiones
+### 7.2. Micrófonos: Medición y revisiones
 
 1. Determinar si tiene 1 o 2 micrófonos.
 2. Testeamos de que tenga dos tierras(Continuidad - 4 contactos).
+	1. Cuando falla una de las tierras puede que no funcione o que funcione con mucho ruido.
 3. En uno de los contactos sin continuidad controlamos el voltage.
-	1. Encendemos el móvil y hacer uso del micrófono(ej: llamada, grabando, ...)
+	1. _Encendemos_ el móvil y hacer uso del micrófono(ej: llamada, grabando, ...)
 		1. Solo ahí el PMIC entregara alimentación al micrófono,casi siempre el V es 1.8V.
 4. Verificar que no nos falten componentes cerca,(no las de fabrica con soldadura perfecta)
 5. Cambiamos el micrófono.
-6. 
+6. Si aun no funciona, revisar los contactos '+ y datos',cada 1  debe tener continuidad con alguna bobina...
+	1. Colocamos el micrófono, cable rojo a tierra y el negro a los componentes con los que tenia continuidad.
+		1. En escala de diodo deben mostrar valor, en los dos contactos de ese componente(bobina...)
+
+```
+Buscar en google: 
+modelo mic way
+imagenes
+```
+# 8. ¿Sin señal o sin SIM?
+
+```	
+No es lo mismo que el movil no detecte la SIM
+	a que te reconozca pero no levante señal.
+```
+
+### 8.1. Líneas del portasim
+
+Lo normal es tener 6 contactos; en caso de tener 8, los últimos de cada fila no se usan.
+
+|Nª |Funct     |Nª |Funct|
+|---|----------|---|---|
+|1  |_VCC (1.8V)_|5  |_GND (tierra)_      |
+|2  |_RST_       |6  |VPP (V de Program)|
+|3  |_CLK_       |7  |_I/O (in/out)_      |
+|4  |          |8  |                  |
+
+###### Lineas RST,CLK,I/O estas tienen comunicación con la CPU.
+
+#### PortaSim con Sistema de bandeja
+
+Tienen un sistema de identificación que detecta cuando se coloca o extrae la sim.
+Posee dos contactos que funcionan como un resorte que al momento de extraer la bandeja,
+ambos contactos se unen y al colocar la bandeja empuja un contacto cortando dicha union.
+
+### 8.2. PortaSim: Diagnostico
+
+- verificamos que los contactos estén es buen estado.
+- En escala de continuidad buscamos el contacto a tierra(el de lado es positivo).
+	- Una punta a tierra(chapa) y medimos cada contacto.
+	- Verificamos que los demás contactos no tengan continuidad.
+- Escala de diodos, punta roja a tierra y medimos con la otra.
+	- Deben de mostrar valor a excepción del VPP (1).
+- Escala de voltage, punta negra a tierra, roja en VCC.
+	- Al encender el equipo debe mostrar un voltage(entre 1.8V y 3V).
+
+_Si estas comprobraciones son correctos y aun así no detecta la SIM, cambiar el lector no lo solucionará._
+
+```
+	Buscar en Google
+	modelo SIM ways
+```
+
+
+### 8.3. Circuitos de señal: revisión
+
+La zona de radio frecuencia esta compuesta por muchos componentes en una zona,
+muchos chip IC (con soldadura por fuera- ~~no por debajo~~).
+
+- Los switch de antena(circulares) deben tener continuidad(entre entrada y salida).
+
+##### Transceiver o WTR
+Los demás IC(_amplificadores de potencia 2G,3G,..._) tienen soldaduras por fuera,en cambio el transceiver tiene soldadura bga(por debajo).
+
+Solucionar este tipo de problemas es complejo, para una reparación inicial es recomendable:
+  - Si el equipo se quedó sin señal luego de un golpe, se recomienda volver a soldar el WTR.
+
+_Hay amplificadores de potencia que vienen directo de la batería o linea principal, si ponemos en corto esa linea podemos dejar el móvil apagado._
+
+# 9. Soldadura y Malla desoldante
+
+### 9.1. Soldadura
+
+- estaño de pasta
+- flux
+
+```
+Mezclar flux con estaño, asi tenemos un estaño diluido y mas facil de aplicar 
+```
+
+### 9.2. Malla desoldante
+
+```
+Solo usamos la punta de la malla, una vez usado lo cortamos
+```
+
+
+### 9.3. Extracción de componentes
+
+capacitores, resistencias, bobinas, diodos.... ~~I C~~
+
+- Aplicamos flux sobre el componente
+- Temperatura alrededor de 400 (varia)
+- Cogemos con la pinza el componente
+	- Levantamos unos milímetros la placa
+- Aplicamos el calor en circular (sin frenar) desde el diagonal
+	- Posicionar al lado donde el calor afecte menos a otros componentes
+
+#### Uso de malla desoldante
+
+- Siempre se usa solo la punta de la malla
+	- Para evitar daños evitar usar lejos de la punta
+- Aplicamos un poco de flux a donde limpiar
+- Apoyamos el soldador de costado
+	- Quien guía a la malla es el soldador
+- Limpiamos la placa con removedor de flux
+
+### 9.3.1. Colocación de componentes
+
+- Coloca  _estaño en pasta_ semi liquido en los contactos
+	- No importa si el estaño puesto une los contactos
+		- Aplicándole aire caliente necesario, el estaño de dividirá en los contactos
+ - Colocamos el componente mas ó menos correcto si no es perfecto
+	- Al aplicar aire caliente dicho componente se acomodara solo
+
+- Calienta el contactos y derrite el _estaño en alambre_ (entre el contacto y el soldador)
+
+- Coloca _estaño en alambre_ en la punta del soldador
+	- Aplica un poco de flux sobre los contactos
+
+### 9.4. Pin de carga: _extracción_
+
+#### Tradicional
+
+- Aplica flux en los contactos del pin de carga
+- Aplica estaño en alambre sobre los contactos
+- Tira aire caliente en circular (dirige el flujo de aire hacia afuera)
+	- _No tironear el pin_
+
+#### Otro
+
+- Aplica flux en el pin de carga
+- Apoya el soldador en el pin de carga
+	- Mientras aplicamos estaño en alambre
+	- Hasta remover el pin de carga
+
+#### _Limpieza_
+
+#### Tradicional
+
+- Aplica un poco de flux en los contactos
+- Apoya la malla desoldante en el contacto
+	- Y sobre la malla el soldador apoyando de costado
+- Ir moviendo con el soldador la malla, al final limpia con removedor de flux 
+
+#### Otro
+
+- Colocamos la placa con el pin de carga sobre el vació
+- Aplica un poco de flux en los contactos
+- Activamos el succionador de estaño
+	- Lo colocamos justo por debajo del agujero del contacto a limpiar
+- Colocamos un poco de estaño a la punta del soldador
+- Apoyamos el soldador de contado en el contacto
+	- Una vez se derrite el estaño activamos el succionador
+
+
+### 9.5. Botón de encendido: _extracción_
+
+- Aplica estaño en pasta sobre los contactos
+- Con el soldador unimos el estaño viejo con el aplicado
+- Aplicamos flux
+- Tomamos el botón con las pinzas
+	- Levantamos unos milímetros
+- Aplicamos aire caliente hacia afuera
+_si se va a reutilizar el botón, limpiarlo con flux_
+
+##### _Limpieza_
+
+- Colocamos estaño nuevo sobre los contactos
+- Pon la malla desoldante sobre los contactos
+	- Y sobre esta el soldador (de costado) y movemos
+	- No importa si queda un poco de estaño en los agujeros del contacto
+
+##### _Colocación_
+
+- Aplica flux en los agujeros del contacto
+- Colocamos el botón con sus dos contactos(pines) en el agujero
+	- El flux nos ayuda a mantenerlo en ese lugar
+	- _Volteamos la placa_
+- Sobre el otro lado colocamos flux el los agujeros del contacto
+- Aplica un poco de estaño en el soldador
+- Derretimos el estaño sobre el contacto
+	- Luego volvemos a la parte superior de la placa
+1. Aplicamos _estaño en pasta_ sobre los contactos restantes
+	- Aplicamos el soldador sobre ella
+	- El contacto del centro es solo para el buen agarre del botón
+
+### 9.6. Micrófonos: _extracción_
+
+- Si se aplica flux, aplicar muy poca
+	- _Si el flux ingresa dentro del micrófono puede dañarlo_
+- Sostenemos el micrófono con la pinza desde la base
+	- _No sostener solo de encima ya que puede salir solo la carcasa del micrófono_
+	- Una vez sacado esperar a que se enfríe el estaño que une la carcasa con su base
+- Aplicamos aire caliente en circular
+
+##### _Colocación_
+
+- _Primero limpiamos los contactos con estaño viejo_
+- Aplica flux en los contactos (Placa o la del micrófono)
+1. Colocamos estaño en pasta sobre los contactos (aplicar soldador)
+2. Aplicar estaño en alambre en el soldador luego sobre los contactos
+- Aplicar un poco de flux sobre los contactos en la placa
+- Colocamos el micrófono en su misma posición inicial 
+- Aplicamos aire caliente en circular
+_No rociar productos de limpieza directamente sobre el micrófono_
+_Hay micrófonos sensibles al alcohol_
+_Aplicar aire caliente a la zona del micrófono, no directamente al mismo_
+- Puede usarse opcional un hisopo para limpiarlo
+
+### 9.7. Desarme de pantallas OLED
+
+```
+Calentar el equipo para facilitar su despegue
+entre 5-10min en la plancha a 90ª-95ª
+o aplicar calor con metodo alternativo
+```
+
+- Dispersamos bencina en todo el marco (facilita aflojar el pegamento)
+- Ingresar la espátula entre la pantalla y el marco
+- Luego de ingresar la espátula aplicar más bencina y deslizar en todo el marco
+	- Si se pone dura(aplicar mas bencina) ,si se enfría(calentar un poco)
+	- _Buscar y verificar la posición del flex de esa pantalla para no dañarlo_
+	- _Las laminas que cubren las pantallas de repuesto son una excelente herramienta para el proceso de despegue sin dañar el flex_
+		- Estas son mas flexibles
+	- Una vez descubierto los bordes, sustituye la espátula por la lámina
+		- Terminamos el proceso de despegue aplicando bencina para facilitar
+
+### 9.7.1. Desarme de pantallas IPS
+
+```
+Calentar el equipo entre 5-10 min en la pancha a 90ª-95ª
+o aplicar calor con metodo altenativo
+```
+
+_El aplicar químicos que faciliten el despegue puede provocar manchas en la pantalla_
+
+- Mantener encendida la pantalla si el teléfono aun muestra imagen
+	- Esto nos ayuda cuando ingresemos la espátula
+		- Al ingresar mal la espátula(entre los papeles) se verá por la pantalla
+- Humedecer la espátula con muy poca bencina(que no gotee)
+- Luego de soltar los bordes, reemplazamos la espátula con la lámina
+
+### 9.8. Pegado de pantallas
+
+- Remover el pegamento viejo con bencina
+	- El marco tiene que estar limpio
+- Antes de pegar la pantalla, probar que este en funcionamiento.
+- Aplicar pegamento en ambos marcos(base y pantalla)
+	- Dejar secar entre 3 y 5min
+- Una vez unido, colocar pinzas durante le secado
+	- Dejar el equipo secar como mínimo 30min, lo ideal 1h
+
+### 9.8.1. Desarme de tapas traseras
+
+- Colocar el equipo en la plancha a 95ª durante 5min
+- Ingresamos la espátula entre la tapa y el marco
+	- Siempre con ayuda de bencina para aflojar el pegamento
+	- Nunca trabajar en frío, puede dañarse la tapa
+
+### 9.8.2. Baño químico
+
+##### Batea de ultrasonido
+
+```
+Limpia un telefono mojado,
+llega a los lugares que manualmente no podemos llegar,
+evita que se sulfate
+```
+
+- Seleccionamos 50 wats y el tiempo 10min
+- Vibra y calienta el químico que se le coloca
+
+###### Químicos
+- Alcohol isopropílico
+- Agua destilada
+- WD-40 (_recomendado_)
+
+###### Proceso
+- Cubrimos los orificios del micrófono
+	- Con Silicona o con el pegamento de pantallas
+- Colocamos la placa en la batea
+- Agrega el químico hasta cubrir completamente el equipo
+- Lo dejamos 5min a 6min aprox
+	- Cumplido el tiempo pausar la batea
+- Voltea la placa y dejamos 5min a 6min aprox
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
